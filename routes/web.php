@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', function () {
+
+});
+
+Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+Route::get('/confirm', [ProductController::class, 'confirmPurchase'])->name('confirm');
+Route::post('/order/create', [OrderController::class, 'create'])->name('order.create');
+Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+Route::post('/pay', [OrderController::class, 'pay'])->name('pay');
+
+Route::get('/success', function () {
+    return view('success');
+})->name('success');
