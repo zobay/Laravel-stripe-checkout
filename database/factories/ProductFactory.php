@@ -11,7 +11,7 @@ final class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->userName,
-            'price' => $this->faker->randomDigit(),
+            'price' => rand(100, 999),
         ];
     }
 }
